@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
 
+  #Nos permite mapear el sitio para generar el CRUD
+  resources :articles #, except: [:delete] Todas las siguientes excepto delete
+  #                , only: [:create, :show] Rutas solo para crear y mostrar.
+  
+  #Es lo mismo que:
+  #get     "/articles"
+  #post    "/articles"
+  #delete  "/articles"
+  #get     "/articles/:id"
+  #get     "/articles/new"
+  #get     "/articles/:id/edit"
+  #patch   "/articles/:id"
+  #put     "/articles"
+  
+  #Al intriducir special nos manda al controlador welcome a la accion index
+  get "special", to: "welcome#index"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
