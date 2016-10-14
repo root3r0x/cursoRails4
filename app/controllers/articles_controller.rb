@@ -13,10 +13,16 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
   
-  #Guardar articulo | POST /articles
+  #Guardar articulo | POST q/articles
   def create
     @article = Article.new( tittle: params[:article][:tittle],body: params[:article][:body])
-    @article.save()
-    redirect_to Article
+    
+    #Si pasa las condiciones
+    if @article.save
+      redirect_to Article
+    else
+      #Abre el formulario new
+      render :new
+    end  
   end
 end
