@@ -12,4 +12,11 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
   end
+  
+  #Guardar articulo
+  def create
+    @article = Article.new( tittle: params[:article][:tittle],body: params[:article][:body])
+    @article.save()
+    redirect_to Article
+  end
 end
