@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
   
-  #Guardar articulo
+  #Guardar articulo | POST /articles
   def create
     @article = Article.new( tittle: params[:article][:tittle],body: params[:article][:body])
     @article.save()
