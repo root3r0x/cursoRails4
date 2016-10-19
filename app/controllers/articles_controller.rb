@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   
   #Guardar articulo | POST q/articles
   def create
-    @article = Article.new( tittle: params[:article][:tittle],body: params[:article][:body])
+    @article = Article.new(article_params)
     
     #Si pasa las condiciones
     if @article.save
@@ -25,4 +25,11 @@ class ArticlesController < ApplicationController
       render :new
     end  
   end
+  
+  #metodos de la clase 
+  private
+  def article_params
+    params.require(:article).permit(:tittle,:body)
+  end
+  
 end
