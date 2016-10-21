@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   #Nos permite mapear el sitio para generar el CRUD
   resources :articles #, except: [:delete] Todas las siguientes excepto delete
   #                , only: [:create, :show] Rutas solo para crear y mostrar.
