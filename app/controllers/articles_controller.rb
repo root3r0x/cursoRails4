@@ -31,6 +31,25 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
   
+  #Destroy /articles/:id
+  def destroy
+    #Delete from articles
+    @article = Article.find(params[:id])
+    @article.destroy #Eliminar el objeto de la BD
+    redirect_to articles_path
+  end
+  
+  #PUT /articles/id
+  def update
+    #Update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit
+    end
+  end  
+   
   #metodos de la clase 
   private
   def article_params
