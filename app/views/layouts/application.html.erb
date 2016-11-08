@@ -2,19 +2,17 @@
 <html>
 <head>
   <title>CursoFacilito</title>
-  <link href="https://fonts.googleapis.com/css?family=Courgette|Paprika" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Courgette|Paprika" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	 <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
 	<header>
 		<nav class="be-red white large-padding">
 			<ul class="no-list row center-xs middle-xs">
 				<li class="col-md">
-					<h1 class="no-margin" id="logo">Blog</h1> 
+					<h1 class="no-margin" id="logo">Blog</h1>
 				</li>
 				<li class="col-md">
 					<%= link_to "Inicio", root_path %>
@@ -28,9 +26,16 @@
 				<li class="col-md">
 					Tecnología
 				</li>
+        <% if user_signed_in? %>
+          <li class="col-md">
+            <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>
+          </li>
+        <% end %>
 			</ul>
 		</nav>
 	</header>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 	<%= yield %>
 </body>
 </html>
